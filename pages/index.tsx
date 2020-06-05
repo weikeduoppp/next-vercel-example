@@ -1,9 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
 import { getSortedPostsData } from "../lib/posts";
+import { GetstaticProps } from "next";
 
-export default function Home({ allPostsData }) {
-  console.log(allPostsData);
+export default function Home({
+  allPostsData
+}: {
+  allPostsData: { date: string; title: string; id: string }[];
+}) {
   return (
     <div className="container">
       <Head>
@@ -12,11 +16,11 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <main>
-        <section >
-          <h2 >Blog</h2>
-          <ul >
+        <section>
+          <h2>Blog</h2>
+          <ul>
             {allPostsData.map(({ id, date, title }) => (
-              <li  key={id}>
+              <li key={id}>
                 {title}
                 <br />
                 {id}
@@ -188,11 +192,11 @@ export default function Home({ allPostsData }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetstaticProps = (context) => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
     },
   };
-}
+};

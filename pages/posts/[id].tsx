@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function Post({ postData }) {
+export default function Post() {
   const router = useRouter();
   return <div>{router.query.id}</div>;
 }
