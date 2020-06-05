@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import { getSortedPostsData } from "../lib/posts";
-import { GetstaticProps } from "next";
+import { GetStaticProps } from "next";
 
 export default function Home({
-  allPostsData
+  allPostsData,
 }: {
   allPostsData: { date: string; title: string; id: string }[];
 }) {
@@ -192,7 +192,7 @@ export default function Home({
   );
 }
 
-export const getStaticProps: GetstaticProps = (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
