@@ -9,6 +9,8 @@ import Router, { useRouter } from "next/router";
 import fetch from "unfetch";
 import useSWR from "swr";
 
+
+
 // 动态加载
 import dynamic from "next/dynamic";
 const DynamicComponent = dynamic(() => import("components/hello"), {
@@ -25,10 +27,9 @@ export default function Home({
 }: {
   allPostsData: { date: string; title: string; id: string }[];
 }) {
-  const router = useRouter();
-  console.log(router.query.counter);
   const { data, error } = useSWR("/api/post", fetcher);
-  console.log(data, error);
+
+
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
  
@@ -45,10 +46,10 @@ export default function Home({
           <DynamicComponent />
           <h2
             onClick={() => {
-              Router.push("/posts/213");
+              Router.push("/counter");
             }}
           >
-            Blog
+            Counter
           </h2>
           <p
             onClick={() => {
