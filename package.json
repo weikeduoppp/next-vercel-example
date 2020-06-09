@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "gray-matter": "^4.0.2",
     "next": "9.3.5",
+    "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "swr": "^0.2.2",

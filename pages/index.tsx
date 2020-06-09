@@ -1,23 +1,65 @@
+// html/head
 import Head from "next/head";
 import Link from "next/link";
 import { getSortedPostsData } from "../lib/posts";
 import { GetStaticProps } from "next";
+// 路由
+import Router, { useRouter } from "next/router";
+// 请求
+import fetch from "unfetch";
+import useSWR from "swr";
+
+// 动态加载
+import dynamic from "next/dynamic";
+const DynamicComponent = dynamic(() => import("components/hello"), {
+  // 带有自定义加载组件
+  loading: () => <div>loading....</div>,
+});
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
+
 
 export default function Home({
   allPostsData,
 }: {
   allPostsData: { date: string; title: string; id: string }[];
 }) {
+  const router = useRouter();
+  console.log(router.query.counter);
+  const { data, error } = useSWR("/api/post", fetcher);
+  console.log(data, error);
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+ 
   return (
     <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/nprogress.css" />
       </Head>
 
       <main>
         <section>
-          <h2>Blog</h2>
+          <DynamicComponent />
+          <h2
+            onClick={() => {
+              Router.push("/posts/213");
+            }}
+          >
+            Blog
+          </h2>
+          <p
+            onClick={() => {
+              Router.push("/?counter=10", undefined, { shallow: true });
+            }}
+          >
+            浅层路由
+          </p>
+          <Link href="/post">
+            <a>About Us</a>
+          </Link>
           <ul>
             {allPostsData.map(({ id, date, title }) => (
               <li key={id}>
@@ -192,6 +234,7 @@ export default function Home({
   );
 }
 
+// 
 export const getStaticProps: GetStaticProps = async (context) => {
   const allPostsData = getSortedPostsData();
   return {
