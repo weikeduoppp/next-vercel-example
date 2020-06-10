@@ -46,7 +46,7 @@ export default function Home({
           <DynamicComponent />
           <h2
             onClick={() => {
-              Router.push("/counter");
+              Router.push({ pathname: "/counter", query: { name: "counter" } });
             }}
           >
             Counter
@@ -58,7 +58,7 @@ export default function Home({
           >
             浅层路由
           </p>
-          <Link href="/post">
+          <Link href="/posts/2">
             <a>About Us</a>
           </Link>
           <ul>
