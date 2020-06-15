@@ -2,11 +2,11 @@ import { combineReducers } from 'redux'
 import * as types from './types'
 
 // 数值
-interface counterFunc {
+interface CounterFunc {
   (state: number, action: { type: string, payload?: number }): number;
 }
 
-const counterReducer: counterFunc = (state = 0, { type }) => {
+const counterReducer: CounterFunc = (state = 0, { type }) => {
    switch (type) {
      case types.INCREMENT:
        return state + 1;
@@ -47,12 +47,12 @@ const HomeReducer: HomeFunc = (state = HomeState, { type, payload }) => {
 };
 
 
-interface reducersFunc {
-  counter: counterFunc,
+interface ReducersFunc {
+  counter: CounterFunc,
   home: HomeFunc
 }
 
-const reducers: reducersFunc = {
+const reducers: ReducersFunc = {
   counter: counterReducer,
   home: HomeReducer,
 };
