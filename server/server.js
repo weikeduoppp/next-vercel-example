@@ -5,11 +5,19 @@ const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const { connection } = require("./db.js");
+
 
 app.prepare().then(() => {
   const server = express()
 
+  // 数据库连接
+  connection.connect((err) => {
+    if (err) throw err;
+    console.log("mysql is running");
+  });
 
+  connection.end();
 
   server.all('*', (req, res) => {
     return handle(req, res)
