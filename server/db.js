@@ -6,7 +6,7 @@ function createConnection() {
     host: env ? "127.0.0.1" : "localhost",
     user: "yewq",
     password: "123123",
-    database: "fb",
+    database: "blog",
     port: 3306
   });
 }
