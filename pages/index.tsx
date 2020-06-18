@@ -1,7 +1,6 @@
 // html/head
 import Head from "next/head";
 import Link from "next/link";
-import { getSortedPostsData } from "../lib/posts";
 import { GetStaticProps } from "next";
 // 路由
 import Router, { useRouter } from "next/router";
@@ -25,7 +24,7 @@ export default function Home({
   allPostsData,
 }: {
   allPostsData: { date: string; title: string; id: string }[];
-}) {
+}) {  
   const { data, error } = useSWR("/api/post", fetcher);
 
 
@@ -35,7 +34,7 @@ export default function Home({
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>yewq</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/nprogress.css" />
       </Head>
