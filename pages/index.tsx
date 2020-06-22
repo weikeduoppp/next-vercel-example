@@ -40,7 +40,7 @@ export default function Home({
       </Head>
 
       <main>
-      
+        <h1>yewq</h1>
       </main>
 
  

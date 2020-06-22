@@ -22,12 +22,14 @@ const counterReducer: CounterFunc = (state = 0, { type }) => {
 // index页
 export interface HomeStateInterface {
   name: string;
-  age: number
+  age: number;
+  status: number
 }
 
 const HomeState: HomeStateInterface = {
   name: "yewq",
   age: 18,
+  status: 0
 };
 
 interface HomeFunc {
@@ -59,3 +61,4 @@ const reducers: ReducersFunc = {
 
 
 export default combineReducers(reducers)
+
