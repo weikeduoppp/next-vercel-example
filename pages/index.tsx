@@ -7,7 +7,7 @@ import Router, { useRouter } from "next/router";
 // 请求
 import fetch from "unfetch";
 import useSWR from "swr";
-
+import { useSelector } from 'react-redux'
 
 // 动态加载
 import dynamic from "next/dynamic";
@@ -26,7 +26,7 @@ export default function Home({
   allPostsData: { date: string; title: string; id: string }[];
 }) {  
   const { data, error } = useSWR("/api/post", fetcher);
-
+  const home = useSelector(state => state.home)
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -40,14 +40,10 @@ export default function Home({
       </Head>
 
       <main>
-        <h1>yewq</h1>
+        <h1>{home.name}</h1>
       </main>
 
- 
-
-      <style jsx>{`
-
-      `}</style>
+      <style jsx>{``}</style>
 
       <style jsx global>{`
         html,

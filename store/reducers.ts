@@ -22,14 +22,15 @@ const counterReducer: CounterFunc = (state = 0, { type }) => {
 // index页
 export interface HomeStateInterface {
   name: string;
-  age: number;
-  status: number
+  avatar: string;
+  login_status: number;
 }
 
 const HomeState: HomeStateInterface = {
-  name: "yewq",
-  age: 18,
-  status: 0
+  name: "您",
+  avatar: '',
+  //  1/0
+  login_status: 0
 };
 
 interface HomeFunc {
