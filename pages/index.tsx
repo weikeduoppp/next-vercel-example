@@ -40,6 +40,7 @@ export default function Home({
       </Head>
 
       <main>
+
         <h1>{home.name}</h1>
       </main>
 
