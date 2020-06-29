@@ -1,8 +1,13 @@
 import Head from "next/head";
 
+interface LayoutProps {
+  keys: string;
+  children: React.ReactNode;
+}
 
 // 登录注册 基本模板
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ keys, children }: LayoutProps) {
+  console.log(keys)
   return (
     <div className="main">
       <Head>
