@@ -4,18 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "express_dev": "node server/server.js",
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
+    "express_dev": "node server/server.js",
     "express_start": "cross-env NODE_ENV=production node server/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
-    "gray-matter": "^4.0.2",
     "mysql": "^2.18.1",
+    "gray-matter": "^4.0.2",
     "next": "9.3.5",
     "nprogress": "^0.2.0",
     "react": "16.13.1",
